@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Thread;
 use Illuminate\Http\Request;
 
 class ThreadsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $threads = Thread::latest()->get();
+        return view('threads.index',compact('threads'));
     }
 
     /**
@@ -37,15 +35,10 @@ class ThreadsController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function show(Thread $thread)
     {
-        //
+        return view('threads.show',compact('thread'));
     }
 
     /**

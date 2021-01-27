@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Thread;
 use Tests\TestCase;
 
 class ThreadTest extends TestCase
@@ -9,8 +10,16 @@ class ThreadTest extends TestCase
     /** @test */
     public function a_user_can_browse_threads()
     {
-        $response = $this->get('/threads');
+        $thread = factory(Thread::class)->create();
+        $response = $this->get('/threads')
+            ->assertSee($thread->title);
+    }
 
-        $response->assertStatus(200);
+    /** @test */
+    public function a_user_can_browse_thread()
+    {
+        $thread = factory(Thread::class)->create();
+        $response = $this->get($thread->path())
+            ->assertSee($thread->title);
     }
 }
