@@ -11,6 +11,7 @@
                             <article>
                                 <a href="{{$thread->path()}}"><h3>{{$thread->title}}</h3></a>
                                 <p class="lead">{{$thread->body}}</p>
+                               <p><a href="#">{{$thread->creator->name}}</a> <span>{{$thread->created_at->diffForHumans()}}</span> </p>
                             </article>
                             <hr>
                         @endforeach
