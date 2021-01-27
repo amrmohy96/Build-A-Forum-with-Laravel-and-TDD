@@ -3,6 +3,5 @@
   - User
   - Thread
   - Reply
-  
 A. a Thread created by user
 B. a Reply belongs to Thread and User
